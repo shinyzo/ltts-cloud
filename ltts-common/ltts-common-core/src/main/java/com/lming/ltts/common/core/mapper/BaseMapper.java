@@ -6,4 +6,6 @@ package com.lming.ltts.common.core.mapper;
  * Description:
  */
 public class BaseMapper {
+
+
 }

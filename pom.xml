@@ -29,14 +29,14 @@
 
     <modules>
         <module>ltts-common</module>
-        <module>ltts-admin-server</module>
+        <module>ltts-admin</module>
         <module>ltts-admin-ui</module>
-        <module>ltts-code-generator</module>
         <module>ltts-register</module>
         <module>ltts-gateway</module>
-        <module>ltts-job</module>
         <module>ltts-monitor</module>
         <module>ltts-modules</module>
+        <module>ltts-xcloud-doc</module>
+        <module>ltts-xcloud-service</module>
     </modules>
 
     <dependencyManagement>
