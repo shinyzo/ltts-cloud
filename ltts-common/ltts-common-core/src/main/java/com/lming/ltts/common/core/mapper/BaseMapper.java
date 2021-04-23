@@ -5,7 +5,7 @@ package com.lming.ltts.common.core.mapper;
  * Date : 2021/4/20 - 10:27
  * Description:
  */
-public class BaseMapper {
+public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
 
 
 }
