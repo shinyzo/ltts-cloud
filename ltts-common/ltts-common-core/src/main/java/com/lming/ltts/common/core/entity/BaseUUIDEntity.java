@@ -12,9 +12,9 @@ import java.io.Serializable;
  * Description: 分配UUID,主键类型为String(since 3.3.0),使用接口IdentifierGenerator的方法nextUUID(默认default方法)
  */
 @Data
-public class BaseUUIDEntity implements Serializable {
+public class BaseUUIDEntity implements IdEntity  {
 
     @TableId(type= IdType.ASSIGN_UUID)
-    private Long id;
+    private String id;
 
 }

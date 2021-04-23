@@ -11,7 +11,7 @@ import java.util.Date;
  * Description:
  */
 @Data
-public class BaseEntity extends BaseIdEntity implements Serializable {
+public class BaseEntity extends BaseIdEntity {
 
     private Date createTime;
 

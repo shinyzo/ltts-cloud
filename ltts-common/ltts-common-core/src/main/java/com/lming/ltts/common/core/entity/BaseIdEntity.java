@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Description: 采用数据库自增主键属性进行id自增
  */
 @Data
-public class BaseIdEntity implements Serializable {
+public class BaseIdEntity implements IdEntity {
 
     @TableId
     private Long id;
