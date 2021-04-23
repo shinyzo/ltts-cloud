@@ -1,6 +1,5 @@
 package com.lming.ltts.common.core.exception;
 
-import com.lming.ltts.common.core.interfaces.IResult;
 import lombok.Getter;
 
 /**
@@ -9,17 +8,10 @@ import lombok.Getter;
  * Description: 数据校验异常
  */
 @Getter
-public class LttsValidationException extends RuntimeException {
-
-    private Integer code;
+public class LttsValidationException extends LttsBaseException {
 
     public LttsValidationException(Integer code, String message) {
-        super(message);
-        this.code = code;
+        super(code,message);
     }
 
-    public LttsValidationException(IResult result) {
-        super(result.getMessage());
-        this.code = code;
-    }
 }
