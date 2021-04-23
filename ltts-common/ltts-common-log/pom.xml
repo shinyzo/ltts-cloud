@@ -11,5 +11,9 @@
 
     <artifactId>ltts-common-log</artifactId>
 
+    <dependencies>
+
+    </dependencies>
+
 
 </project>

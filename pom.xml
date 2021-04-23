@@ -10,10 +10,15 @@
     <packaging>pom</packaging>
 
     <properties>
+        <ltts.version>0.0.1-SNAPSHOT</ltts.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <spring-cloud-alibaba-dependencies.version>2.2.1.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version> <lombok.version>1.18.12</lombok.version>
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <knife4j.version>2.0.6</knife4j.version>
     </properties>
 
     <developers>
@@ -29,14 +34,11 @@
 
     <modules>
         <module>ltts-common</module>
-        <module>ltts-admin</module>
-        <module>ltts-admin-ui</module>
         <module>ltts-register</module>
         <module>ltts-gateway</module>
         <module>ltts-monitor</module>
-        <module>ltts-modules</module>
-        <module>ltts-xcloud-doc</module>
-        <module>ltts-xcloud-service</module>
+        <module>ltts-business</module>
+        <module>ltts-cloud-service</module>
     </modules>
 
     <dependencyManagement>
@@ -66,8 +68,34 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
 
 
 </project>
