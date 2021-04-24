@@ -1,6 +1,6 @@
 package com.lming.ltts.order;
 
-import com.lming.ltts.common.swagger.annotation.EnableLttsSwagger2;
+import com.lming.ltts.common.swagger.annotation.EnableKnife4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Description:
  */
 @SpringBootApplication
-@EnableLttsSwagger2
+@EnableKnife4j2
 public class OrderApplication {
 
     public static void main(String[] args) {

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.lming.ltts.common.swagger.config.SwaggerAutoConfiguration
+com.lming.ltts.common.swagger.config.Knife4jConfig

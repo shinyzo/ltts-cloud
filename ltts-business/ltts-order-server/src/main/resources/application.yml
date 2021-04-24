@@ -1,10 +1,18 @@
 swagger:
   enabled: true
   basePackage: com.lming.ltts.order.controller
-  title: 订单Restful API
+  title: Ltts Order Restful API
+  description: order server api
   version: 1.0.0
   host: localhost
   contact:
     name: liangming.zhang
     email: liangming.zhang@thermofisher.com
+    url: --
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/scm_uat?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
