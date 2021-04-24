@@ -20,6 +20,7 @@
         <lombok.version>1.18.12</lombok.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <knife4j.version>2.0.5</knife4j.version>
+        <hutool.version>5.6.3</hutool.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -102,6 +103,12 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>2.6.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hu-tool.version}</version>
             </dependency>
 
             <dependency>
