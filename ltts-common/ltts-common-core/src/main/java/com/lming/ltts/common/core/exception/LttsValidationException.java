@@ -14,4 +14,7 @@ public class LttsValidationException extends LttsBaseException {
         super(code,message);
     }
 
+    public LttsValidationException(String message) {
+        super(message);
+    }
 }

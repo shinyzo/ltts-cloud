@@ -1,8 +1,10 @@
 package com.lming.ltts.order;
 
 import com.lming.ltts.common.swagger.annotation.EnableKnife4j2;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Author: liangming.zhang
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableKnife4j2
+@MapperScan(value = "com.lming.ltts.order.mapper")
 public class OrderApplication {
 
     public static void main(String[] args) {

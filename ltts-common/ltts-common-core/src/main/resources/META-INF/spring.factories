@@ -1,4 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.lming.ltts.common.core.util.SpringContextUtil
+com.lming.ltts.common.core.util.SpringContextUtil,\
+com.lming.ltts.common.core.config.MybatisPlusConfig,\
+com.lming.ltts.common.core.handler.GlobalExceptionHandler
 
   

@@ -14,4 +14,7 @@ public class LttsBusinessException extends LttsBaseException {
         super(code,message);
     }
 
+    public LttsBusinessException(String message) {
+        super(message);
+    }
 }

@@ -13,4 +13,8 @@ public class LttsSystemException extends LttsBaseException {
     public LttsSystemException(Integer code, String message) {
         super(code,message);
     }
+
+    public LttsSystemException(String message) {
+        super(message);
+    }
 }

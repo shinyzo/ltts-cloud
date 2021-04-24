@@ -1,24 +1,23 @@
 package com.lming.ltts.common.core.handler;
 
-import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.core.exception.LttsBaseException;
 import com.lming.ltts.common.core.exception.LttsBusinessException;
 import com.lming.ltts.common.core.exception.LttsSystemException;
 import com.lming.ltts.common.core.exception.LttsValidationException;
 import com.lming.ltts.common.core.response.R;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLSyntaxErrorException;
 
 /**
  * Author: liangming.zhang
  * Date : 2021/4/23 - 13:44
  * Description:
  */
+@Configuration
 @RestControllerAdvice
 @ResponseBody
 @Slf4j

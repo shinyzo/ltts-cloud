@@ -27,7 +27,7 @@ public enum ResultEnum implements IResult {
 
     @Override
     public int getCode() {
-        return this.getCode();
+        return this.code;
     }
 
     @Override

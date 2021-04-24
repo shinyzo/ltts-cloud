@@ -21,6 +21,7 @@
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <knife4j.version>2.0.5</knife4j.version>
         <hutool.version>5.6.3</hutool.version>
+        <jasypt.version>2.1.1</jasypt.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -81,6 +82,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.6</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
@@ -90,6 +97,19 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
             </dependency>
 
             <!--Knife4j Swagger2-->
@@ -108,7 +128,7 @@
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>${hu-tool.version}</version>
+                <version>${hutool.version}</version>
             </dependency>
 
             <dependency>
@@ -116,6 +136,7 @@
                 <artifactId>ltts-common-core</artifactId>
                 <version>${ltts.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.lming.ltts</groupId>
                 <artifactId>ltts-common-swagger</artifactId>

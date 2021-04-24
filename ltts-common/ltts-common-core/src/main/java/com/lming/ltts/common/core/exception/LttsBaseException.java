@@ -1,5 +1,6 @@
 package com.lming.ltts.common.core.exception;
 
+import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.core.interfaces.IResult;
 import lombok.Data;
 
@@ -19,4 +20,8 @@ public class LttsBaseException extends RuntimeException {
         this.code = code;
     }
 
+    public LttsBaseException(String message) {
+        super(message);
+        this.code = ResultEnum.ERROR.getCode();
+    }
 }
