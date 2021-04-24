@@ -18,7 +18,7 @@ spring:
     password: 123456
 
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
   type-aliases-package: com.lming.ltts.order.entity
   configuration:
@@ -31,8 +31,3 @@ mybatis:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
-
-##showSql 开启sql日志打印，生产环境关闭
-#logging:
-#  level:
-#    com.thermofisher.apac.b2b.mapper: DEBUG

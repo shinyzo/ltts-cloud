@@ -1,5 +1,6 @@
 package com.lming.ltts.order.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lming.ltts.common.core.exception.LttsSystemException;
 import com.lming.ltts.common.core.response.R;
 import com.lming.ltts.order.entity.OrderEntity;
@@ -31,6 +32,15 @@ public class OrderController {
 
         return R.data(orderService.selectByOrderId(orderId));
 
+    }
+
+    @ApiOperation(value = "分页查询",notes = "分页查询")
+    @GetMapping("/order/page")
+    public R page(){
+
+        Page page1 = new Page(1,1);
+
+        return R.data(orderService.page(page1));
     }
 
 
