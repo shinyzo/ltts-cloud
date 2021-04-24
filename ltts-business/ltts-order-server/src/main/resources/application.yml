@@ -1,0 +1,10 @@
+swagger:
+  enabled: true
+  basePackage: com.lming.ltts.order.controller
+  title: 订单Restful API
+  version: 1.0.0
+  host: localhost
+  contact:
+    name: liangming.zhang
+    email: liangming.zhang@thermofisher.com
+

@@ -16,6 +16,8 @@
         <module>ltts-common-log</module>
         <module>ltts-common-redis</module>
         <module>ltts-common-swagger</module>
+        <module>ltts-common-mybatis</module>
     </modules>
+
 
 </project>

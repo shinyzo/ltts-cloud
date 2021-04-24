@@ -8,7 +8,6 @@ import lombok.Getter;
  * Date : 2021/4/23 - 13:09
  * Description:
  */
-@Getter
 public enum ResultEnum implements IResult {
 
     SUCCESS(200,"OK"),
@@ -25,4 +24,14 @@ public enum ResultEnum implements IResult {
         this.message = message;
     }
 
+
+    @Override
+    public int getCode() {
+        return this.getCode();
+    }
+
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 }

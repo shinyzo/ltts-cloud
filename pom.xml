@@ -16,9 +16,14 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version> <lombok.version>1.18.12</lombok.version>
+        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
+        <lombok.version>1.18.12</lombok.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
-        <knife4j.version>2.0.6</knife4j.version>
+        <knife4j.version>2.0.4</knife4j.version>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
     </properties>
 
     <developers>
@@ -55,7 +60,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -84,6 +89,18 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.lming.ltts</groupId>
+                <artifactId>ltts-common-core</artifactId>
+                <version>${ltts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lming.ltts</groupId>
+                <artifactId>ltts-common-swagger</artifactId>
+                <version>${ltts.version}</version>
             </dependency>
 
         </dependencies>

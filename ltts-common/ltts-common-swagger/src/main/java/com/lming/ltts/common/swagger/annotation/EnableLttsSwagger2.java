@@ -15,6 +15,6 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Import({ SwaggerAutoConfiguration.class })
-public @interface EnableKnife4jSwagger2 {
+public @interface EnableLttsSwagger2 {
 
 }
