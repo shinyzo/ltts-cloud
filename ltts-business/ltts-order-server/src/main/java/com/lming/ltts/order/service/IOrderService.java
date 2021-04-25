@@ -16,4 +16,6 @@ public interface IOrderService extends IService<OrderEntity> {
 
     List<OrderEntity> selectByOrderId(String orderId);
 
+    List<OrderEntity> selectByOrderId2(String orderId);
+
 }

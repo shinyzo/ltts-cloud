@@ -10,13 +10,47 @@ swagger:
     email: liangming.zhang@thermofisher.com
     url: --
 
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ltts_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    username: root
-    password: 123456
+# single datasource
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.database}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#    username: ${mysql.username}
+#    password: ${mysql.password}
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      minimum-idle: 5
+#      maximum-pool-size: 50
+#      connection-test-query: SELECT 1
+#      max-lifetime: 1800000
+#      connection-timeout: 30000
 
+spring:
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure  #排除druid自动装配
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        master:
+          url: jdbc:mysql://localhost:3306/ltts_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
+        slave:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://localhost:5432/apac_b2b_dev?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+          username: postgres
+          password: 123456
+
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      minimum-idle: 5
+#      maximum-pool-size: 50
+#      connection-test-query: SELECT 1
+#      max-lifetime: 1800000
+#      connection-timeout: 30000
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
@@ -31,3 +65,7 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
+jasypt:
+  encryptor:
+    password: ${jasypt.password}

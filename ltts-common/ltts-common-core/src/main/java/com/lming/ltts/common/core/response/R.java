@@ -1,6 +1,7 @@
 package com.lming.ltts.common.core.response;
 
 import com.lming.ltts.common.core.enums.ResultEnum;
+import com.lming.ltts.common.core.interfaces.IResult;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -33,40 +34,42 @@ public class R<T> implements Serializable
 
     public static <T> R<T> success()
     {
-        return restResult(null, SUCCESS_CODE, null);
+        return restResult(ResultEnum.SUCCESS, null);
     }
 
     public static <T> R<T> data(T data)
     {
-        return restResult(data, SUCCESS_CODE, null);
-    }
-
-    public static <T> R<T> success(T data, String msg)
-    {
-        return restResult(data, SUCCESS_CODE, msg);
+        return restResult(ResultEnum.SUCCESS, data);
     }
 
     public static <T> R<T> error()
     {
-        return restResult(null, FAILED_CODE, null);
+        return restResult( ResultEnum.ERROR, null);
     }
 
     public static <T> R<T> error(String msg)
     {
-        return restResult(null, FAILED_CODE, msg);
+        return restResult(FAILED_CODE,  msg ,null);
     }
 
     public static <T> R<T> error(int code, String msg)
     {
-        return restResult(null, code, msg);
+        return restResult(code, msg, null);
     }
 
     public static <T> R<T> error(T data)
     {
-        return restResult(data, FAILED_CODE, null);
+        return restResult( ResultEnum.ERROR , data);
     }
 
-    private static <T> R<T> restResult(T data, int code, String msg)
+
+
+    private static <T> R<T> restResult(IResult result, T data)
+    {
+        return restResult(result.getCode(), result.getMessage(), data);
+    }
+
+    private static <T> R<T> restResult(int code, String msg,T data)
     {
         R<T> apiResult = new R<>();
         apiResult.setCode(code);

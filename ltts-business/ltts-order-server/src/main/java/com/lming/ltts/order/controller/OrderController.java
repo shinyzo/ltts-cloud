@@ -3,6 +3,8 @@ package com.lming.ltts.order.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lming.ltts.common.core.exception.LttsSystemException;
 import com.lming.ltts.common.core.response.R;
+import com.lming.ltts.common.log.annotation.LttsLog;
+import com.lming.ltts.common.log.enums.LogType;
 import com.lming.ltts.order.entity.OrderEntity;
 import com.lming.ltts.order.service.IOrderService;
 import io.swagger.annotations.Api;
@@ -26,11 +28,21 @@ public class OrderController {
     @Autowired
     private IOrderService orderService;
 
+    @ApiOperation(value = "创建订单(主库)",notes = "创建订单")
+    @GetMapping("/order/create")
+    @LttsLog(title = "创建订单")
+    public R<List<OrderEntity>> createOrder(OrderEntity orderEntity){
+        orderService.save(orderEntity);
+        return R.success();
+
+    }
+
     @ApiOperation(value = "订单查询",notes = "订单查询接口")
     @GetMapping("/order/query/{orderId}")
-    public R<List<OrderEntity>> selectByOrderId(@PathVariable(value = "orderId") String orderId){
+    @LttsLog(title = "查询订单")
+    public R<List<OrderEntity>> selectSlaveOrder(@PathVariable(value = "orderId") String orderId){
 
-        return R.data(orderService.selectByOrderId(orderId));
+        return R.data(orderService.selectByOrderId2(orderId));
 
     }
 

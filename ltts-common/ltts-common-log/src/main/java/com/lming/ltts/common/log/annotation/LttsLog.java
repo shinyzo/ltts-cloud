@@ -1,6 +1,7 @@
 package com.lming.ltts.common.log.annotation;
 
 import com.lming.ltts.common.log.enums.LogType;
+import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
 
@@ -14,16 +15,11 @@ import java.lang.annotation.*;
 @Documented
 public @interface LttsLog {
 
-    /**
-     * 日志类型
-     * @return
-     */
-    LogType type() default  LogType.NORMAL;
+    @AliasFor("name")
+    String title() default "";
 
-    /**
-     * 系统名称
-     * @return
-     */
-    String system() default "";
+    @AliasFor("title")
+    String name() default "";
 
+    String module() default "";
 }

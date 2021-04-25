@@ -1,6 +1,8 @@
 package com.lming.ltts.order.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lming.ltts.datasource.annotation.Master;
+import com.lming.ltts.datasource.annotation.Slave;
 import com.lming.ltts.order.entity.OrderEntity;
 import com.lming.ltts.order.mapper.OrderMapper;
 import com.lming.ltts.order.service.IOrderService;
@@ -15,6 +17,7 @@ import java.util.List;
  * Description:
  */
 @Service
+@Master
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> implements IOrderService {
 
     @Autowired
@@ -30,4 +33,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
 
         return orderMapper.selectByOrderId(orderId);
     }
+
+    @Override
+    @Slave
+    public List<OrderEntity> selectByOrderId2(String orderId) {
+
+        return orderMapper.selectByOrderId(orderId);
+    }
+
+
 }
