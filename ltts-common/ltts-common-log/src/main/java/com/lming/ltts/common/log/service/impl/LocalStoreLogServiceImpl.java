@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
  * Description:
  */
 @Service
-@EnableAsync
 @Slf4j
 public class LocalStoreLogServiceImpl implements AsyncLogService {
 

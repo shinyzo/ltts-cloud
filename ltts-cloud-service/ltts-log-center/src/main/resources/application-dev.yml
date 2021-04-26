@@ -1,0 +1,24 @@
+mysql:
+  host: localhost
+  port: 3306
+  database: ltts_log
+  username: root
+  password: 123456
+
+ # password: mpw:JCzzOub0Nn4i7HqnoMKLMw==
+#  password: ENC(P/+zqfN3nf+ogQoYW/nl/UEitdT7xLgidS1Ik0uNOok=)
+
+mpw:
+  key: 8135631e8f67493a
+
+jasypt:
+  password: q1w2e3r4t5y6u7=!@345
+
+
+ltts:
+  log:
+    enabled: true
+    collectType: REMOTE_SINGLE
+    remoteServer:
+      clusterName: log-cneter
+      serverUrl: http://localhost:8080/log/collect

@@ -21,5 +21,4 @@ public enum LogCollectType {
     MQ_ACTIVE,
     MQ_ROCKET,
     ;
-
 }

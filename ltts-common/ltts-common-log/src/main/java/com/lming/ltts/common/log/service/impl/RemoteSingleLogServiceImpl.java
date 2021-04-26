@@ -7,6 +7,7 @@ import com.lming.ltts.common.log.enums.LogCollectType;
 import com.lming.ltts.common.log.service.AsyncLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,8 +19,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 @Slf4j
-@EnableAsync
-public class RestRemoteLogServiceImpl implements AsyncLogService {
+public class RemoteSingleLogServiceImpl implements AsyncLogService {
 
 
     @Autowired
@@ -29,6 +29,7 @@ public class RestRemoteLogServiceImpl implements AsyncLogService {
     private RestTemplate restTemplate;
 
     @Override
+    @Async
     public void saveLog(LogEntity logEntity) {
         if(StrUtil.isNotEmpty(logProperties.getServerUrl())){
             remoteSingleLogRecord(logEntity,logProperties.getServerUrl());
@@ -38,7 +39,6 @@ public class RestRemoteLogServiceImpl implements AsyncLogService {
 
     private void remoteSingleLogRecord(LogEntity logEntity,String serverUrl) {
         try{
-            Thread.sleep(10000);
             restTemplate.postForEntity(serverUrl,logEntity,null);
         }catch (Exception e){
             e.printStackTrace();

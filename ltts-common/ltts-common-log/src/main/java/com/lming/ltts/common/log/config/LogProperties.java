@@ -1,7 +1,5 @@
 package com.lming.ltts.common.log.config;
 
-import com.lming.ltts.common.log.entity.RemoteServer;
-import com.lming.ltts.common.log.enums.LogCollectType;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

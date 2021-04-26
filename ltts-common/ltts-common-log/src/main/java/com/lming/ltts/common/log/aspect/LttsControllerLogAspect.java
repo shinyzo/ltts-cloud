@@ -114,9 +114,10 @@ public class LttsControllerLogAspect {
             getControllerMethodDescription(joinPoint, controllerLog, logEntity);
             // 保存数据库
             asyncLogService.saveLog(logEntity);
+            System.out.println("======>");
+
         } catch (Exception exp) {
             // 记录本地异常日志
-            log.error("==前置通知异常==");
             log.error("异常信息:{}", exp.getMessage());
             exp.printStackTrace();
         }

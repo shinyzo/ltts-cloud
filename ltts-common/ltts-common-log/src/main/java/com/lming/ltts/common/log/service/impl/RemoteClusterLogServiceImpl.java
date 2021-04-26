@@ -8,6 +8,7 @@ import com.lming.ltts.common.log.enums.LogCollectType;
 import com.lming.ltts.common.log.service.AsyncLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,6 +24,7 @@ public class RemoteClusterLogServiceImpl implements AsyncLogService {
     private LogProperties logProperties;
 
     @Override
+    @Async
     public void saveLog(LogEntity logEntity) {
        if(StrUtil.isNotEmpty(logProperties.getClusterName())){
 
