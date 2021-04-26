@@ -24,8 +24,7 @@ import java.util.function.Predicate;
 @EnableSwagger2
 @EnableKnife4j
 @ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
-public class Knife4jConfig
-{
+public class Knife4jConfig {
     /**
      * 默认的排除路径，排除Spring Boot默认的错误处理路径和端点
      */
@@ -40,8 +39,7 @@ public class Knife4jConfig
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
         // base-path处理
-        if (swaggerProperties.getBasePath().isEmpty())
-        {
+        if (swaggerProperties.getBasePath().isEmpty()) {
             swaggerProperties.getBasePath().add(BASE_PATH);
         }
         // noinspection unchecked
@@ -49,10 +47,10 @@ public class Knife4jConfig
         swaggerProperties.getBasePath().forEach(path -> basePath.add(PathSelectors.ant(path)));
 
         // exclude-path处理
-        if (swaggerProperties.getExcludePath().isEmpty())
-        {
+        if (swaggerProperties.getExcludePath().isEmpty()) {
             swaggerProperties.getExcludePath().addAll(DEFAULT_EXCLUDE_PATH);
         }
+
         List<Predicate<String>> excludePath = new ArrayList<>();
         swaggerProperties.getExcludePath().forEach(path -> excludePath.add(PathSelectors.ant(path)));
 
@@ -65,11 +63,10 @@ public class Knife4jConfig
                 .build()
                 .pathMapping("/");
 
-
     }
 
-    private ApiInfo apiInfo()
-    {
+    private ApiInfo apiInfo() {
+
         return new ApiInfoBuilder()
                 .title(swaggerProperties.getTitle())
                 .description(swaggerProperties.getDescription())
