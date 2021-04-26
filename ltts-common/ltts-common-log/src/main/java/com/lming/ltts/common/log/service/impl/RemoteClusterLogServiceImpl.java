@@ -24,18 +24,16 @@ public class RemoteClusterLogServiceImpl implements AsyncLogService {
 
     @Override
     public void saveLog(LogEntity logEntity) {
-       if(LogCollectType.LOCAL_PRINT == logProperties.getCollectType() &&
-               StrUtil.isNotEmpty(logProperties.getRemoteServer().getClusterName())
-       ){
+       if(StrUtil.isNotEmpty(logProperties.getClusterName())){
 
-          remoteClusterLogRecord(logEntity,logProperties.getRemoteServer().getClusterName());
+          remoteClusterLogRecord(logEntity,logProperties.getClusterName());
 
        }
     }
 
     private void remoteClusterLogRecord(LogEntity logEntity, String clusterName) {
 
-
+        log.info("==> 集群发送：{} ");
     }
 
 }

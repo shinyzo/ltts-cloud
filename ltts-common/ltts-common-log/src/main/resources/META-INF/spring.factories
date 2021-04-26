@@ -1,4 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.lming.ltts.common.log.aspect.LttsControllerLogAspect,\
-    com.lming.ltts.common.log.config.LogProperties,\
-    com.lming.ltts.common.log.config.RestTemplateConfig
+    com.lming.ltts.common.log.config.LogAutoConfiguration

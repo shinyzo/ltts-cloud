@@ -28,10 +28,6 @@ public class LogEntity extends BaseIdEntity implements Serializable {
      */
     private String serverIp;
     /**
-     * 服务端模块
-     */
-    private String module;
-    /**
      * 客户端ip
      */
     private String clientIp;
@@ -86,7 +82,7 @@ public class LogEntity extends BaseIdEntity implements Serializable {
     /**
      *  请求日期(年月日)
      */
-    private Date requestDate;
+    private Date createDate;
     /**
      * 时间戳
      */

@@ -24,11 +24,7 @@ public class LocalPrintLogServiceImpl implements AsyncLogService {
 
     @Override
     public void saveLog(LogEntity logEntity) {
-       if(LogCollectType.LOCAL_PRINT == logProperties.getCollectType()){
-
-           log.info("==> local log print:{}" , JSONUtil.toJsonStr(logEntity));
-
-       }
+        log.info("==> local log print:{}" , JSONUtil.toJsonStr(logEntity));
     }
 
 }

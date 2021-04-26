@@ -19,11 +19,13 @@ public class LogProperties {
      * 是否启用
      */
     private Boolean enabled;
-
-    private LogCollectType collectType;
     /**
-     * 远程服务对象
+     * 集群时，集群名称
      */
-    private RemoteServer remoteServer;
+    private String clusterName;
+    /**
+     * 服务端日志收集的url
+     */
+    private String serverUrl;
 
 }

@@ -21,5 +21,4 @@ public @interface LttsLog {
     @AliasFor("title")
     String name() default "";
 
-    String module() default "";
 }

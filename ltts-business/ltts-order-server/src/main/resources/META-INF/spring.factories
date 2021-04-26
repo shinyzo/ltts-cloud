@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.lming.ltts.common.log.service.impl.RestRemoteLogServiceImpl

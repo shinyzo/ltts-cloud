@@ -16,6 +16,7 @@
     <modules>
         <module>ltts-job</module>
         <module>ltts-code-generator</module>
+        <module>ltts-log-center</module>
     </modules>
 
 </project>

@@ -9,6 +9,8 @@ import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.enums.LogType;
 import org.aspectj.lang.JoinPoint;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,13 +28,13 @@ import java.util.Objects;
 public class LogUtil {
 
 
+
     public static LogEntity buildLogEntity() {
         HttpServletRequest request = ((ServletRequestAttributes) Objects
                 .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 
         LogEntity logEntity = new LogEntity();
 
-        logEntity.setServerName(getServerName());
         logEntity.setServerIp(getServerIp());
 
         logEntity.setLogType(LogType.NORMAL.getType());
@@ -43,7 +45,7 @@ public class LogUtil {
         logEntity.setRequestData(HttpUtil.toParams(request.getParameterMap()));
 
         Date date = new Date();
-        logEntity.setRequestDate(date);
+        logEntity.setCreateDate(date);
         logEntity.setTimestamp(date);
 
         logEntity.setResponseCode(ResultEnum.SUCCESS.getCode());
@@ -51,13 +53,6 @@ public class LogUtil {
 
         return logEntity;
     }
-
-    private static String getServerName(){
-
-        return "order-server";
-
-    }
-
 
 
     /**

@@ -26,14 +26,10 @@ public class LocalStoreLogServiceImpl implements AsyncLogService {
     @Autowired
     private LogProperties logProperties;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
 
     @Override
     public void saveLog(LogEntity logEntity) {
-       if(LogCollectType.LOCAL_STORAGE == logProperties.getCollectType()){
-           localStorageLog(logEntity);
-       }
+        localStorageLog(logEntity);
     }
 
 

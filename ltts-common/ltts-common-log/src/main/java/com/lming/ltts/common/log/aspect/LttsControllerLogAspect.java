@@ -4,6 +4,7 @@ package com.lming.ltts.common.log.aspect;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
+import com.lming.ltts.common.core.util.SpringContextUtil;
 import com.lming.ltts.common.log.annotation.LttsLog;
 import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.service.AsyncLogService;
@@ -14,13 +15,12 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.ServiceLoader;
+
 
 
 /**
@@ -30,16 +30,35 @@ import java.util.ServiceLoader;
  */
 @Aspect
 @Slf4j
-@ConditionalOnProperty(name = "ltts.log.enabled", havingValue ="true",matchIfMissing = false)
 public class LttsControllerLogAspect {
+
+    @Value("${spring.application.name}")
+    private String applicationName;
 
     @Autowired
     private AsyncLogService asyncLogService;
+
+    private ThreadLocal<Long> threadLocal = new ThreadLocal<>();
 
     //切点
     @Pointcut("@annotation(com.lming.ltts.common.log.annotation.LttsLog)")
     public void logPointcut() {
     }
+
+
+    /**
+     * 处理完请求后执行
+     *
+     * @param joinPoint 切点
+     */
+    @Before(value = "logPointcut()")
+    public void doBefore(JoinPoint joinPoint)
+    {
+        Long startTime = System.currentTimeMillis();
+        threadLocal.set(startTime);
+    }
+
+
 
 
     /**
@@ -82,10 +101,13 @@ public class LttsControllerLogAspect {
             String methodName = joinPoint.getSignature().getName();
             logEntity.setClassName(className);
             logEntity.setMethodName(methodName);
+            logEntity.setServerName(applicationName);
+
+            logEntity.setCostTime(System.currentTimeMillis() - threadLocal.get());
 
             if (e != null) {
                 logEntity.setResponseCode(ResultEnum.ERROR.getCode());
-                logEntity.setErrorMsg(StrUtil.subSufByLength(e.getMessage(), 2000));
+                logEntity.setErrorMsg(StrUtil.subSufByLength(e.getMessage(), 500));
             }
 
             // 处理设置注解上的参数
@@ -111,7 +133,6 @@ public class LttsControllerLogAspect {
     {
 
         logEntity.setLogName(StrUtil.isEmpty(log.title()) ? log.name() : log.title());
-        logEntity.setModule(log.module());
     }
 
 

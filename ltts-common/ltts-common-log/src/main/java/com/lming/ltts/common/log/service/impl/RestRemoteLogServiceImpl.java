@@ -1,7 +1,6 @@
 package com.lming.ltts.common.log.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.lming.ltts.common.core.util.SpringContextUtil;
 import com.lming.ltts.common.log.config.LogProperties;
 import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.enums.LogCollectType;
@@ -31,15 +30,15 @@ public class RestRemoteLogServiceImpl implements AsyncLogService {
 
     @Override
     public void saveLog(LogEntity logEntity) {
-        if(LogCollectType.REMOTE_SINGLE == logProperties.getCollectType()
-                && StrUtil.isNotEmpty(logProperties.getRemoteServer().getServerUrl())){
-            remoteSingleLogRecord(logEntity,logProperties.getRemoteServer().getServerUrl());
+        if(StrUtil.isNotEmpty(logProperties.getServerUrl())){
+            remoteSingleLogRecord(logEntity,logProperties.getServerUrl());
         }
     }
 
 
     private void remoteSingleLogRecord(LogEntity logEntity,String serverUrl) {
         try{
+            Thread.sleep(10000);
             restTemplate.postForEntity(serverUrl,logEntity,null);
         }catch (Exception e){
             e.printStackTrace();
