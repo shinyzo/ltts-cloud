@@ -24,10 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  * Description:
  */
 @Slf4j
-@Component
 public class JwtInterceptor  extends HandlerInterceptorAdapter {
 
-    @Autowired
     private JwtProperties jwtProperties;
 
     @Override
