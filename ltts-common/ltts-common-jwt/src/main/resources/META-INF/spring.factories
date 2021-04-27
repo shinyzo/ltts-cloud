@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.lming.ltts.common.jwt.config.WebConfig,\
-com.lming.ltts.common.jwt.config.JwtConfig
+com.lming.ltts.common.jwt.config.JwtConfig,\
+com.lming.ltts.common.jwt.interceptor.JwtInterceptor

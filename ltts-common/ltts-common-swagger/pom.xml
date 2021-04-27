@@ -24,6 +24,10 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-core</artifactId>
+        </dependency>
 
     </dependencies>
 

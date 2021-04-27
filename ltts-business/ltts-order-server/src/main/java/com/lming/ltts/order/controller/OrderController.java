@@ -3,6 +3,7 @@ package com.lming.ltts.order.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lming.ltts.common.core.exception.LttsSystemException;
 import com.lming.ltts.common.core.response.R;
+import com.lming.ltts.common.jwt.annotation.JwtIgnore;
 import com.lming.ltts.common.log.annotation.LttsLog;
 import com.lming.ltts.common.log.enums.LogType;
 import com.lming.ltts.order.entity.OrderEntity;
@@ -41,6 +42,7 @@ public class OrderController {
     @ApiOperation(value = "订单查询",notes = "订单查询接口")
     @GetMapping("/order/query/{orderId}")
     @LttsLog(title = "查询订单")
+    @JwtIgnore
     public R<List<OrderEntity>> selectSlaveOrder(@PathVariable(value = "orderId") String orderId){
 
         return R.data(orderService.selectByOrderId2(orderId));
@@ -49,11 +51,19 @@ public class OrderController {
 
     @ApiOperation(value = "分页查询",notes = "分页查询")
     @GetMapping("/order/page")
+    @JwtIgnore
     public R page(){
 
         Page page1 = new Page(1,1);
 
         return R.data(orderService.page(page1));
+    }
+
+    @ApiOperation(value = "Jwt测试",notes = "Jwt测试")
+    @GetMapping("/order/test")
+    @JwtIgnore
+    public R test(){
+        return R.SUCCESS;
     }
 
 

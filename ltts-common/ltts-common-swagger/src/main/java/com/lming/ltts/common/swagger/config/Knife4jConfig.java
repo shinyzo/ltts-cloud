@@ -2,15 +2,19 @@ package com.lming.ltts.common.swagger.config;
 
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import com.lming.ltts.common.core.constants.JwtConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -35,6 +39,14 @@ public class Knife4jConfig {
     @Autowired
     private  SwaggerProperties swaggerProperties;
 
+    private List<Parameter> addHeaderParameters(){
+        ParameterBuilder tokenPar = new ParameterBuilder();
+        List<Parameter> pars = new ArrayList<Parameter>();
+        tokenPar.name(JwtConstants.AUTH_HEADER_KEY).description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        pars.add(tokenPar.build());
+        return pars;
+    }
+
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
@@ -56,11 +68,13 @@ public class Knife4jConfig {
 
         //noinspection Guava
         return new Docket(DocumentationType.SWAGGER_2)
-                .host(swaggerProperties.getHost())
-                .apiInfo(apiInfo()).select()
+                .select()
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
                 .paths(PathSelectors.any())
                 .build()
+                .globalOperationParameters(addHeaderParameters())
+                .apiInfo(apiInfo())
+                .host(swaggerProperties.getHost())
                 .pathMapping("/");
 
     }

@@ -1,15 +1,17 @@
 package com.lming.ltts.common.jwt.interceptor;
 
 import cn.hutool.core.util.StrUtil;
+import com.lming.ltts.common.core.constants.JwtConstants;
 import com.lming.ltts.common.core.exception.LttsAuthException;
+import com.lming.ltts.common.core.util.SpringContextUtil;
 import com.lming.ltts.common.jwt.annotation.JwtIgnore;
 import com.lming.ltts.common.jwt.config.JwtProperties;
-import com.lming.ltts.common.jwt.constants.JwtConstants;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
 import com.lming.ltts.common.jwt.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * Description:
  */
 @Slf4j
+@Component
 public class JwtInterceptor  extends HandlerInterceptorAdapter {
 
     @Autowired
@@ -51,6 +54,9 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
         }
         // 获取token
         final String token = authHeader.substring(JwtConstants.TOKEN_PREFIX.length());
+        if(jwtProperties == null){
+            jwtProperties = SpringContextUtil.getBean(JwtProperties.class);
+        }
         JwtTokenUtil.parseJWT(token, jwtProperties.getBase64Secret());
         return true;
     }

@@ -39,8 +39,8 @@ public class RemoteSingleLogServiceImpl implements AsyncLogService {
         try{
             restTemplate.postForEntity(serverUrl,logEntity,null);
         }catch (Exception e){
-            e.printStackTrace();
-            log.error("remote rest send log error:{}",e);
+
+            log.error("remote rest send log error:{}",e.getMessage());
         }
     }
 }

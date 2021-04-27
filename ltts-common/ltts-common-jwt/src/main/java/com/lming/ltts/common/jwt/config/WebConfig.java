@@ -26,7 +26,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private JwtProperties jwtProperties;
 
-    public static String[] DEFAULT_IGNORE_URLS = {"/v2/api-docs","/doc.html","/swagger-resources/**"};
+    public static String[] DEFAULT_IGNORE_URLS = {
+            "/v2/api-docs","/doc.html","/swagger-resources/**",
+            "/webjars/css/**", "/webjars/js/**"
+        };
 
 
     private void addIgnoreUrls(List<String> ignoreAuthUrls){
