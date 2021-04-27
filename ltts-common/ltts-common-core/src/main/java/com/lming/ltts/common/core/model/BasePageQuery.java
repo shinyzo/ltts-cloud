@@ -1,6 +1,8 @@
 package com.lming.ltts.common.core.model;
 
+import com.sun.istack.internal.NotNull;
 import lombok.Data;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.io.Serializable;
 

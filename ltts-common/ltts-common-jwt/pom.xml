@@ -9,26 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ltts-common-log</artifactId>
+    <artifactId>ltts-common-jwt</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.lming.ltts</groupId>
             <artifactId>ltts-common-core</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.lming.ltts</groupId>
-            <artifactId>ltts-common-mybatis</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
     </dependencies>
-
 
 </project>

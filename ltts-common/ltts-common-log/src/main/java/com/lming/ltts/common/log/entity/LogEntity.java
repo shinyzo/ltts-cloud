@@ -1,8 +1,7 @@
 package com.lming.ltts.common.log.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lming.ltts.common.core.entity.BaseIdEntity;
-import com.lming.ltts.common.core.entity.IdEntity;
+import com.lming.ltts.common.mybatis.entity.BaseIdEntity;
 import lombok.Data;
 import lombok.ToString;
 

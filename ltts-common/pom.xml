@@ -18,6 +18,8 @@
         <module>ltts-common-redis</module>
         <module>ltts-common-swagger</module>
         <module>ltts-common-datasource</module>
+        <module>ltts-common-jwt</module>
+        <module>ltts-common-mybatis</module>
     </modules>
 
 

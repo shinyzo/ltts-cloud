@@ -8,7 +8,6 @@ import com.lming.ltts.common.core.response.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,11 +72,6 @@ public class GlobalExceptionHandler {
         return R.error(e.getCode(), e.getMessage());
     }
 
-    @ExceptionHandler(BadSqlGrammarException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public R badSqlGrammarExceptionHandler(BadSqlGrammarException e) {
-        log.error(e.getMessage(), e);
-        return R.error(e.getMessage());
-    }
+
 
 }

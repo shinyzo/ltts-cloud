@@ -24,4 +24,9 @@ public class LttsBaseException extends RuntimeException {
         super(message);
         this.code = ResultEnum.ERROR.getCode();
     }
+
+    public LttsBaseException(IResult result) {
+        super(result.getMessage());
+        this.code = result.getCode();
+    }
 }

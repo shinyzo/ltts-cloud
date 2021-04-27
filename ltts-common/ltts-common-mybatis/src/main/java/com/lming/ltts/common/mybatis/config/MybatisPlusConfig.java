@@ -1,4 +1,5 @@
-package com.lming.ltts.common.core.config;
+package com.lming.ltts.common.mybatis.config;
+
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

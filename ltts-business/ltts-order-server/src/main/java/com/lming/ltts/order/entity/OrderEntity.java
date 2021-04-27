@@ -2,7 +2,7 @@ package com.lming.ltts.order.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lming.ltts.common.core.entity.BaseIdEntity;
+import com.lming.ltts.common.mybatis.entity.BaseIdEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

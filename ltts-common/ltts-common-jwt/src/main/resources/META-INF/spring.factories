@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.lming.ltts.common.jwt.config.WebConfig,\
+com.lming.ltts.common.jwt.config.JwtConfig

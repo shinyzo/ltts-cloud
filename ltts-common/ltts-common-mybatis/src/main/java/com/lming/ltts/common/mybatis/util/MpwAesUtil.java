@@ -1,4 +1,4 @@
-package com.lming.ltts.common.core.util;
+package com.lming.ltts.common.mybatis.util;
 
 import com.baomidou.mybatisplus.core.toolkit.AES;
 

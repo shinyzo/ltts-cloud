@@ -28,3 +28,14 @@ ltts:
     enabled: true
     clusterName: log-cneter
     serverUrl: http://localhost:9090/log/collect
+  jwt:
+    enabled: true
+    authUrls: /**
+    ignoreUrls: /order/test
+    clientId: 098f6bcd4621d373cade4e832627b4f6
+    # 密钥, 经过Base64加密, 可自行替换
+    base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+    # JWT的签发主体，存入issuer
+    name: restapiuser
+    # 过期时间，时间戳
+    expiresSecond: 172800

@@ -72,6 +72,11 @@
 
         <dependency>
             <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
             <artifactId>ltts-common-swagger</artifactId>
         </dependency>
 

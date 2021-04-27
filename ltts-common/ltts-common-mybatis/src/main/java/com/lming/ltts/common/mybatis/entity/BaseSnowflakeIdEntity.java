@@ -1,7 +1,8 @@
-package com.lming.ltts.common.core.entity;
+package com.lming.ltts.common.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.lming.ltts.common.core.entity.IdEntity;
 import lombok.Data;
 
 import java.io.Serializable;
