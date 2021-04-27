@@ -90,5 +90,10 @@
             <artifactId>ltts-common-log</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-redis</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

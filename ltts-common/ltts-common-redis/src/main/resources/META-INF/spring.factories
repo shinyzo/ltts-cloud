@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.lming.ltts.common.redis.config.RedisConfig,\
+com.lming.ltts.common.redis.lock.RedisDistributedLock,\
+com.lming.ltts.common.redis.service.RedisService

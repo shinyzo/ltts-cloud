@@ -1,6 +1,8 @@
 package com.lming.ltts.order.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lming.ltts.common.redis.lock.RedisDistributedLock;
+import com.lming.ltts.common.redis.service.RedisService;
 import com.lming.ltts.datasource.annotation.Master;
 import com.lming.ltts.datasource.annotation.Slave;
 import com.lming.ltts.order.entity.OrderEntity;
