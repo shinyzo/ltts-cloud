@@ -1,5 +1,6 @@
 package com.lming.ltts.common.jwt.config;
 
+import com.lming.ltts.common.core.constants.JwtConstants;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -17,7 +18,7 @@ public class JwtProperties {
     /**
      * 是否启用jwt认证
      */
-    private boolean enabled;
+    private boolean enabled = true;
 
     /**
      * 需要授权认证的urls
@@ -27,12 +28,28 @@ public class JwtProperties {
      * 忽略的urls
      */
     private List<String> ignoreUrls;
-
-    private String clientId;
-
-    private String base64Secret;
-
+    /**
+     * client_id
+     */
+    private String clientId = "098f6bcd4621d373cade4e832627b4f6";
+    /**
+     * base64私钥
+     */
+    private String base64Secret ="MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=";
+    /**
+     *
+     */
     private String name;
-
-    private int expiresSecond;
+    /**
+     * 过期毫秒数
+     */
+    private int expiresSecond = 1000 * 60 * 30;
+    /**
+     * 前端token前缀
+     */
+    private String tokenPrefix = JwtConstants.DEFAULT_TOKEN_VALUE_PREFIX;
+    /**
+     * hader中的token参数名称
+     */
+    private String tokenHeaderName = JwtConstants.DEFAULT_TOKEN_HEADER_NAME;
 }

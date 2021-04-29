@@ -28,6 +28,11 @@
             <artifactId>ltts-common-mybatis</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-api-log</artifactId>
+        </dependency>
+
     </dependencies>
 
 

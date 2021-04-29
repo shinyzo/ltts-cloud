@@ -1,17 +1,11 @@
 package com.lming.ltts.common.log.util;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
-import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.enums.LogType;
-import org.aspectj.lang.JoinPoint;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import com.lming.ltts.log.api.entity.LogRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -29,11 +23,11 @@ public class LogUtil {
 
 
 
-    public static LogEntity buildLogEntity() {
+    public static LogRequest buildLogEntity() {
         HttpServletRequest request = ((ServletRequestAttributes) Objects
                 .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 
-        LogEntity logEntity = new LogEntity();
+        LogRequest logEntity = new LogRequest();
 
         logEntity.setServerIp(getServerIp());
 

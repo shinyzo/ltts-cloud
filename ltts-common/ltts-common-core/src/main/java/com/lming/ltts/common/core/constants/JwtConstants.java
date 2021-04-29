@@ -7,7 +7,7 @@ package com.lming.ltts.common.core.constants;
  */
 public interface JwtConstants {
 
-    String AUTH_HEADER_KEY = "Authorization";
+    String DEFAULT_TOKEN_HEADER_NAME = "Authorization";
 
-    String TOKEN_PREFIX = "Bearer ";
+    String DEFAULT_TOKEN_VALUE_PREFIX = "Bearer ";
 }

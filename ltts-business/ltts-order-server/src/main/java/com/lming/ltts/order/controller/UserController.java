@@ -26,10 +26,6 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/auth")
 public class UserController {
 
-
-    @Autowired
-    private JwtProperties jwtProperties;
-
     @Autowired
     private RedisService redisService;
 
@@ -38,7 +34,7 @@ public class UserController {
     @LttsLog(title = "用户认证")
     @JwtIgnore
     public R login(String userName,String password){
-        String token = JwtTokenUtil.createJWT("1111",userName,"ADMIN",jwtProperties);
+        String token = JwtTokenUtil.createJWT("1111",userName,"ADMIN");
         redisService.setCacheObject(UserConstants.USER_REDIS_PREFIX_KEY.concat(token),null,30L, TimeUnit.MINUTES);
         return R.data(token);
     }

@@ -4,11 +4,10 @@ package com.lming.ltts.common.log.aspect;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
-import com.lming.ltts.common.core.util.SpringContextUtil;
 import com.lming.ltts.common.log.annotation.LttsLog;
-import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.service.AsyncLogService;
 import com.lming.ltts.common.log.util.LogUtil;
+import com.lming.ltts.log.api.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -16,7 +15,6 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 
 import java.lang.reflect.Method;
@@ -93,7 +91,7 @@ public class LttsControllerLogAspect {
                 return;
             }
 
-            LogEntity logEntity = LogUtil.buildLogEntity();
+            LogRequest logEntity = LogUtil.buildLogEntity();
             // 返回参数
             logEntity.setResponseData(JSONUtil.toJsonStr(jsonResult));
             // 设置方法名称
@@ -130,7 +128,7 @@ public class LttsControllerLogAspect {
      * @param logEntity
      * @throws Exception
      */
-    public void getControllerMethodDescription(JoinPoint joinPoint, LttsLog log, LogEntity logEntity) throws Exception
+    public void getControllerMethodDescription(JoinPoint joinPoint, LttsLog log, LogRequest logEntity) throws Exception
     {
 
         logEntity.setLogName(StrUtil.isEmpty(log.title()) ? log.name() : log.title());

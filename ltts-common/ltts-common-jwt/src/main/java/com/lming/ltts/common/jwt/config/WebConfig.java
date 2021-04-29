@@ -20,8 +20,10 @@ import java.util.List;
  * Description:
  */
 @Configuration
-@ConditionalOnProperty(name = "ltts.jwt.enabled", havingValue = "true", matchIfMissing = false)
 public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private JwtInterceptor jwtInterceptor;
 
     @Autowired
     private JwtProperties jwtProperties;
@@ -32,33 +34,34 @@ public class WebConfig implements WebMvcConfigurer {
         };
 
 
-    private void addIgnoreUrls(List<String> ignoreAuthUrls){
-
-        ignoreAuthUrls.addAll(Arrays.asList(DEFAULT_IGNORE_URLS));
-    }
-
     /**
      * 添加拦截器
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        List<String> authUrls = jwtProperties.getAuthUrls();
-        List<String> ignoreAuthUrls = new ArrayList<>();
-        addIgnoreUrls(ignoreAuthUrls);
+        //拦截路径可自行配置多个 可用 ，分隔开
+        registry.addInterceptor(jwtInterceptor)
+                .addPathPatterns(getAuthUrls())
+                .excludePathPatterns(getIgnoreUrls());
+    }
 
-        if(CollectionUtil.isEmpty(authUrls)){
+
+    private List<String> getAuthUrls(){
+        List<String> authUrls = new ArrayList<>();
+        if(CollectionUtil.isEmpty(jwtProperties.getAuthUrls())){
             authUrls.add("/**");
         }
+        return authUrls;
+    }
 
+    private List<String> getIgnoreUrls(){
+        List<String> ignoreAuthUrls = new ArrayList<>();
+        ignoreAuthUrls.addAll(Arrays.asList(DEFAULT_IGNORE_URLS));
         if(CollectionUtil.isNotEmpty(jwtProperties.getIgnoreUrls())){
             ignoreAuthUrls.addAll(jwtProperties.getIgnoreUrls());
         }
-
-        //拦截路径可自行配置多个 可用 ，分隔开
-        registry.addInterceptor(new JwtInterceptor())
-                .addPathPatterns(authUrls)
-                .excludePathPatterns(ignoreAuthUrls);
+        return ignoreAuthUrls;
     }
 
 

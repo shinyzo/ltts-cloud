@@ -1,7 +1,6 @@
 package com.lming.ltts.common.log.service;
 
-import com.lming.ltts.common.log.entity.LogEntity;
-import org.springframework.scheduling.annotation.EnableAsync;
+import com.lming.ltts.log.api.entity.LogRequest;
 
 /**
  * Author: liangming.zhang
@@ -10,6 +9,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
  */
 public interface AsyncLogService {
 
-    public void saveLog(LogEntity logEntity);
+    public boolean isExecute();
+
+
+    public void saveLog(LogRequest logEntity);
+
 
 }

@@ -6,6 +6,8 @@ import com.lming.ltts.common.jwt.config.JwtProperties;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -18,8 +20,11 @@ import java.util.Date;
  * Description:
  */
 @Slf4j
+@Component
 public class JwtTokenUtil {
 
+    @Autowired
+    private static JwtProperties jwtProperties;
 
     /**
      * 解析jwt
@@ -41,15 +46,15 @@ public class JwtTokenUtil {
             throw new LttsAuthException(AuthResultEnum.AUTH_TOKEN_INVALID);
         }
     }
+
     /**
-     * 构建jwt
+     *
      * @param userId
      * @param username
      * @param role
-     * @param jwtProperties
      * @return
      */
-    public static String createJWT(String userId, String username, String role, JwtProperties jwtProperties) {
+    public static String createJWT(String userId, String username, String role) {
         try {
             // 使用HS256加密算法
             SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;

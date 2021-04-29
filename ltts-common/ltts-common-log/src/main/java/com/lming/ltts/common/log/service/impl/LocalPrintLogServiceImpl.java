@@ -2,12 +2,10 @@ package com.lming.ltts.common.log.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.lming.ltts.common.log.config.LogProperties;
-import com.lming.ltts.common.log.entity.LogEntity;
-import com.lming.ltts.common.log.enums.LogCollectType;
 import com.lming.ltts.common.log.service.AsyncLogService;
+import com.lming.ltts.log.api.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,8 +21,13 @@ public class LocalPrintLogServiceImpl implements AsyncLogService {
     private LogProperties logProperties;
 
     @Override
-    public void saveLog(LogEntity logEntity) {
-        log.info("==> local log print:{}" , JSONUtil.toJsonStr(logEntity));
+    public boolean isExecute() {
+        return false;
+    }
+
+    @Override
+    public void saveLog(LogRequest logRequest) {
+        log.info("==> local log print:{}" , JSONUtil.toJsonStr(logRequest));
     }
 
 }

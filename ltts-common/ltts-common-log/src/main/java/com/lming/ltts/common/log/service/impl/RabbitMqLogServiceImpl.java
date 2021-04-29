@@ -1,8 +1,8 @@
 package com.lming.ltts.common.log.service.impl;
 
 import cn.hutool.json.JSONUtil;
-import com.lming.ltts.common.log.entity.LogEntity;
 import com.lming.ltts.common.log.service.AsyncLogService;
+import com.lming.ltts.log.api.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +13,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class ActiveMqLogServiceImpl implements AsyncLogService {
-
+public class RabbitMqLogServiceImpl implements AsyncLogService {
 
     @Override
-    public void saveLog(LogEntity logEntity) {
-        log.info("==> send log to mq :{}" , JSONUtil.toJsonStr(logEntity));
+    public boolean isExecute() {
+        return false;
+    }
+
+    @Override
+    public void saveLog(LogRequest logRequest) {
+        log.info("==> send log to mq :{}" , JSONUtil.toJsonStr(logRequest));
     }
 
 }

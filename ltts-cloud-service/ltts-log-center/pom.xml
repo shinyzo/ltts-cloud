@@ -28,27 +28,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
-
-
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-
 
         <dependency>
             <groupId>mysql</groupId>
@@ -78,6 +60,11 @@
         <dependency>
             <groupId>com.lming.ltts</groupId>
             <artifactId>ltts-common-swagger</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-api-log</artifactId>
         </dependency>
 
     </dependencies>

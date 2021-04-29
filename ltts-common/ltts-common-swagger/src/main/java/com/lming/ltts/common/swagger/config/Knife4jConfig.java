@@ -42,7 +42,7 @@ public class Knife4jConfig {
     private List<Parameter> addHeaderParameters(){
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();
-        tokenPar.name(JwtConstants.AUTH_HEADER_KEY).description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        tokenPar.name(JwtConstants.DEFAULT_TOKEN_HEADER_NAME).description("JWT TOKEN").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
         pars.add(tokenPar.build());
         return pars;
     }

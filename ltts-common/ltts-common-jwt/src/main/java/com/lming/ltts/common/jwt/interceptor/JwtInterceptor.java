@@ -1,15 +1,14 @@
 package com.lming.ltts.common.jwt.interceptor;
 
 import cn.hutool.core.util.StrUtil;
-import com.lming.ltts.common.core.constants.JwtConstants;
 import com.lming.ltts.common.core.exception.LttsAuthException;
-import com.lming.ltts.common.core.util.SpringContextUtil;
 import com.lming.ltts.common.jwt.annotation.JwtIgnore;
 import com.lming.ltts.common.jwt.config.JwtProperties;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
 import com.lming.ltts.common.jwt.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -24,8 +23,10 @@ import javax.servlet.http.HttpServletResponse;
  * Description:
  */
 @Slf4j
+@Component
 public class JwtInterceptor  extends HandlerInterceptorAdapter {
 
+    @Autowired
     private JwtProperties jwtProperties;
 
     @Override
@@ -43,18 +44,15 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
             return true;
         }
         // 获取请求头信息authorization信息
-        final String authHeader = request.getHeader(JwtConstants.AUTH_HEADER_KEY);
+        final String authHeader = request.getHeader(jwtProperties.getTokenHeaderName());
         log.info("## authHeader= {}", authHeader);
         log.info("## Request URL ={}", request.getRequestURL());
-        if (StrUtil.isBlank(authHeader) || !authHeader.startsWith(JwtConstants.TOKEN_PREFIX)) {
+        if (StrUtil.isBlank(authHeader) || !authHeader.startsWith(jwtProperties.getTokenPrefix())) {
             log.warn("### 用户未登录，请先登录 ###");
             throw new LttsAuthException(AuthResultEnum.USER_NOT_LOGGED_IN);
         }
         // 获取token
-        final String token = authHeader.substring(JwtConstants.TOKEN_PREFIX.length());
-        if(jwtProperties == null){
-            jwtProperties = SpringContextUtil.getBean(JwtProperties.class);
-        }
+        final String token = authHeader.substring(jwtProperties.getTokenPrefix().length());
         JwtTokenUtil.parseJWT(token, jwtProperties.getBase64Secret());
         return true;
     }

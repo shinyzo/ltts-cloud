@@ -20,6 +20,7 @@
         <module>ltts-common-datasource</module>
         <module>ltts-common-jwt</module>
         <module>ltts-common-mybatis</module>
+        <module>ltts-common-feign</module>
     </modules>
 
 

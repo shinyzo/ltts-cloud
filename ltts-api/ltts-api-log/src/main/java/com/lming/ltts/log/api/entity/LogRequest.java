@@ -1,22 +1,17 @@
-package com.lming.ltts.common.log.entity;
+package com.lming.ltts.log.api.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.lming.ltts.common.mybatis.entity.BaseIdEntity;
 import lombok.Data;
-import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Author: liangming.zhang
- * Date : 2021/4/25 - 12:40
+ * Date : 2021/4/28 - 10:44
  * Description:
  */
 @Data
-@ToString
-@TableName("ltts_log_record")
-public class LogEntity extends BaseIdEntity implements Serializable {
+public class LogRequest implements Serializable {
 
     /**
      * 服务端系统名称
@@ -86,4 +81,5 @@ public class LogEntity extends BaseIdEntity implements Serializable {
      * 时间戳
      */
     private Date timestamp;
+
 }
