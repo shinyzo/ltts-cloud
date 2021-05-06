@@ -1,5 +1,6 @@
 package com.lming.ltts.log.api.feign;
 
+import com.lming.ltts.log.api.constants.ServiceConstants;
 import com.lming.ltts.log.api.entity.LogRequest;
 import com.lming.ltts.log.api.fallback.RemoteLogFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Date : 2021/4/28 - 10:46
  * Description:
  */
-@FeignClient(value = "ltts-log",url = "http://localhost:9090/",fallbackFactory = RemoteLogFallbackFactory.class)
+@FeignClient(value = ServiceConstants.LOG_SERVICE,fallbackFactory = RemoteLogFallbackFactory.class)
 public interface RemoteLogService {
 
 

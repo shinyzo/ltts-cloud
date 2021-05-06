@@ -22,3 +22,8 @@ ltts:
     remoteServer:
       clusterName: log-cneter
       serverUrl: http://localhost:8080/log/collect
+
+nacos:
+  server-addr: 10.68.161.148:8848
+  namespaces: cf7cb9cd-9740-4b33-b4eb-396f398dde82
+  group: LTTS_GROUP

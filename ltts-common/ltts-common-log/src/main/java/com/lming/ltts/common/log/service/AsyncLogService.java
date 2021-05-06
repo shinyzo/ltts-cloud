@@ -11,8 +11,6 @@ public interface AsyncLogService {
 
     public boolean isExecute();
 
-
-    public void saveLog(LogRequest logEntity);
-
+    public void saveLog(LogRequest logRequest);
 
 }

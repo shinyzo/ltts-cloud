@@ -9,5 +9,10 @@ import com.lming.ltts.log.api.entity.LogRequest;
  */
 public abstract class AbstractLogService implements AsyncLogService {
 
+    @Override
+    public boolean isExecute() {
+        return true;
+    }
+
 
 }

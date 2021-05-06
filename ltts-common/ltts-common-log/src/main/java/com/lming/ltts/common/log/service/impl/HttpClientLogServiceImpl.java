@@ -29,7 +29,7 @@ public class HttpClientLogServiceImpl extends AbstractLogService {
     public boolean isExecute() {
 
         if(StrUtil.isEmpty(logProperties.getServerUrl())){
-            log.warn("log properties serverUrl is empty.");
+            log.warn("log center serverUrl is empty.");
             return false;
         }
 
@@ -38,7 +38,8 @@ public class HttpClientLogServiceImpl extends AbstractLogService {
 
     @Override
     public void saveLog(LogRequest logEntity) {
-        if(isExecute()) saveLog(logEntity,logProperties.getServerUrl());
+
+        saveLog(logEntity,logProperties.getServerUrl());
     }
 
 

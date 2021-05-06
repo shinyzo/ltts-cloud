@@ -1,15 +1,11 @@
 package com.lming.ltts.common.log.config;
 
-import cn.hutool.core.util.StrUtil;
 import com.lming.ltts.common.log.aspect.LttsControllerLogAspect;
-import com.lming.ltts.common.log.enums.LogType;
+import com.lming.ltts.common.log.handler.LogHandler;
 import com.lming.ltts.common.log.service.AsyncLogService;
 import com.lming.ltts.common.log.service.impl.LocalPrintLogServiceImpl;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -51,6 +47,11 @@ public class LogAutoConfiguration {
         }
 
         return new LocalPrintLogServiceImpl();
+    }
+
+    @Bean
+    public LogHandler logHandler(){
+        return new LogHandler();
     }
 
 }

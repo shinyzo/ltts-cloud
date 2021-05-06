@@ -36,6 +36,7 @@ public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
     public boolean isExecute() {
 
         if(StrUtil.isEmpty(logProperties.getClusterName())){
+            log.error("log cluster name is empty.");
             return false;
         }
         List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances(logProperties.getClusterName());
@@ -47,17 +48,8 @@ public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
     }
 
     @Override
-    @Async
     public void saveLog(LogRequest logRequest) {
-
-        if(isExecute()) {
-//            ServiceInstance serviceInstance = loadBalancerClient.choose(logProperties.getClusterName());
-//            saveLog(logRequest,getServerUrl(serviceInstance));
-            remoteLogService.saveLog(logRequest);
-        }
-
         remoteLogService.saveLog(logRequest);
-
     }
 
 

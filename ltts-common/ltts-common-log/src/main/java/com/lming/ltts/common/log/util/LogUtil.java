@@ -1,5 +1,6 @@
 package com.lming.ltts.common.log.util;
 
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
@@ -36,7 +37,7 @@ public class LogUtil {
         logEntity.setRequestUri(URLUtil.getPath(request.getRequestURI()));
         logEntity.setMethodType(request.getMethod());
         logEntity.setUserAgent(request.getHeader("user-agent"));
-        logEntity.setRequestData(HttpUtil.toParams(request.getParameterMap()));
+        logEntity.setRequestData(HttpUtil.toParams(request.getParameterMap(), CharsetUtil.CHARSET_UTF_8));
 
         Date date = new Date();
         logEntity.setCreateDate(date);

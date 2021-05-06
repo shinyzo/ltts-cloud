@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.log.annotation.LttsLog;
-import com.lming.ltts.common.log.service.AsyncLogService;
+import com.lming.ltts.common.log.handler.LogHandler;
 import com.lming.ltts.common.log.util.LogUtil;
 import com.lming.ltts.log.api.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class LttsControllerLogAspect {
     private String applicationName;
 
     @Autowired
-    private AsyncLogService asyncLogService;
+    private LogHandler logHandler;
 
     private ThreadLocal<Long> threadLocal = new ThreadLocal<>();
 
@@ -111,8 +111,7 @@ public class LttsControllerLogAspect {
             // 处理设置注解上的参数
             getControllerMethodDescription(joinPoint, controllerLog, logEntity);
             // 保存数据库
-            asyncLogService.saveLog(logEntity);
-            System.out.println("======>");
+            logHandler.handleLog(logEntity);
 
         } catch (Exception exp) {
             // 记录本地异常日志

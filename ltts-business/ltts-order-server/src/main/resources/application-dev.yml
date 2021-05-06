@@ -26,7 +26,7 @@ jasypt:
 ltts:
   log:
     enabled: true
-    clusterName: log-cneter
+    clusterName: log-center
     serverUrl: http://localhost:9090/log/collect
 
   jwt:
