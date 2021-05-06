@@ -211,6 +211,13 @@
                 <version>${ltts.version}</version>
             </dependency>
 
+
+            <dependency>
+                <groupId>com.lming.ltts</groupId>
+                <artifactId>ltts-api-umps</artifactId>
+                <version>${ltts.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

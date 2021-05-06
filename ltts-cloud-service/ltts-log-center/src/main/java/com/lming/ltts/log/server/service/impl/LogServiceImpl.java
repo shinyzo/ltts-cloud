@@ -38,6 +38,34 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, LogEntity> implements
             lambdaQueryWrapper.like(LogEntity::getServerIp,logQuery.getServerIp());
         }
 
+        if(StrUtil.isNotEmpty(logQuery.getClassName())){
+            lambdaQueryWrapper.like(LogEntity::getClassName,logQuery.getClassName());
+        }
+
+        if(StrUtil.isNotEmpty(logQuery.getMethodName())){
+            lambdaQueryWrapper.like(LogEntity::getMethodName,logQuery.getMethodName());
+        }
+
+        if(StrUtil.isNotEmpty(logQuery.getInputDate())){
+            lambdaQueryWrapper.eq(LogEntity::getCreateDate,logQuery.getInputDate());
+        }
+
+        if(StrUtil.isNotEmpty(logQuery.getRequestUri())){
+            lambdaQueryWrapper.like(LogEntity::getRequestUri,logQuery.getRequestUri());
+        }
+
+        if(logQuery.getCostTime() !=null){
+            lambdaQueryWrapper.lt(LogEntity::getCostTime,logQuery.getCostTime());
+        }
+
+        if(logQuery.getResponseCode() !=null){
+            lambdaQueryWrapper.eq(LogEntity::getResponseCode,logQuery.getResponseCode());
+        }
+
+        if(StrUtil.isNotEmpty(logQuery.getLogType())){
+            lambdaQueryWrapper.eq(LogEntity::getLogType,logQuery.getLogType());
+        }
+
        return logMapper.selectPage(page,lambdaQueryWrapper);
     }
 }

@@ -6,7 +6,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Author: liangming.zhang
@@ -18,9 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @EnableJwt
 @MapperScan(value = "com.lming.ltts.order.mapper")
-public class OrderApplication {
+public class OrderServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class);
+        SpringApplication.run(OrderServerApplication.class);
     }
 }

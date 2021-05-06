@@ -18,6 +18,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-redis</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
         </dependency>

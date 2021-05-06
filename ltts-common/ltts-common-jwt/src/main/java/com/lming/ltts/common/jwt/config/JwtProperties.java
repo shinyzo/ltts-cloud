@@ -43,7 +43,7 @@ public class JwtProperties {
     /**
      * 过期毫秒数
      */
-    private int expiresSecond = 1000 * 60 * 30;
+    private Long expiresSecond = 1000 * 60 * 30L;
     /**
      * 前端token前缀
      */
