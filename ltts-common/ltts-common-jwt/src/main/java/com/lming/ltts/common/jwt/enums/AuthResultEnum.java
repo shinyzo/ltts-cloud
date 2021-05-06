@@ -15,7 +15,7 @@ public enum  AuthResultEnum implements IResult {
     AUTH_TOKEN_EXPIRED(901,"token expired"),
     AUTH_TOKEN_INVALID(902,"token invalid"),
     AUTH_SIGNATURE_ERROR(903,"token signature error"),
-    USER_NOT_LOGGED_IN(904,"token empty"),
+    AUTH_TOKEN_EMPTY(904,"token empty"),
     ;
 
     private Integer code;

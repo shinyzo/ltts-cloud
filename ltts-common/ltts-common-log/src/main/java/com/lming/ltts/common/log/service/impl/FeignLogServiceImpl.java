@@ -3,17 +3,14 @@ package com.lming.ltts.common.log.service.impl;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.lming.ltts.common.log.config.LogProperties;
-import com.lming.ltts.common.log.service.AsyncLogService;
 import com.lming.ltts.log.api.entity.LogRequest;
-import com.lming.ltts.log.api.feign.LogFeignApi;
+import com.lming.ltts.log.api.feign.RemoteLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -27,7 +24,7 @@ import java.util.List;
 public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
 
     @Autowired
-    private LogFeignApi logFeignApi;
+    private RemoteLogService remoteLogService;
 
     @Autowired
     private LogProperties logProperties;
@@ -56,10 +53,10 @@ public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
         if(isExecute()) {
 //            ServiceInstance serviceInstance = loadBalancerClient.choose(logProperties.getClusterName());
 //            saveLog(logRequest,getServerUrl(serviceInstance));
-            logFeignApi.saveLog(logRequest);
+            remoteLogService.saveLog(logRequest);
         }
 
-        logFeignApi.saveLog(logRequest);
+        remoteLogService.saveLog(logRequest);
 
     }
 

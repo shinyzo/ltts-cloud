@@ -5,7 +5,7 @@ package com.lming.ltts.order.constants;
  * Date : 2021/4/27 - 20:29
  * Description:
  */
-public interface UserConstants {
+public interface CacheKeyConstants {
 
-    String USER_REDIS_PREFIX_KEY = "LTTS_USER:";
+    String USER_PREFIX_KEY = "user:";
 }

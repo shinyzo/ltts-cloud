@@ -9,6 +9,7 @@ import com.lming.ltts.common.jwt.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -34,7 +35,7 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
         // 忽略带JwtIgnore注解的请求, 不做后续token认证校验
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
-            JwtIgnore jwtIgnore = handlerMethod.getMethodAnnotation(JwtIgnore.class);
+            JwtIgnore jwtIgnore = AnnotationUtils.findAnnotation(handlerMethod.getMethod(),JwtIgnore.class);
             if (jwtIgnore != null) {
                 return true;
             }
@@ -45,11 +46,11 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
         }
         // 获取请求头信息authorization信息
         final String authHeader = request.getHeader(jwtProperties.getTokenHeaderName());
-        log.info("## authHeader= {}", authHeader);
-        log.info("## Request URL ={}", request.getRequestURL());
+        log.info("==> authHeader  : {}", authHeader);
+        log.info("==> Request URL : {}", request.getRequestURL());
         if (StrUtil.isBlank(authHeader) || !authHeader.startsWith(jwtProperties.getTokenPrefix())) {
-            log.warn("### 用户未登录，请先登录 ###");
-            throw new LttsAuthException(AuthResultEnum.USER_NOT_LOGGED_IN);
+            log.warn("==> 用户未登录，请先登录 ###");
+            throw new LttsAuthException(AuthResultEnum.AUTH_TOKEN_EMPTY);
         }
         // 获取token
         final String token = authHeader.substring(jwtProperties.getTokenPrefix().length());

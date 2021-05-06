@@ -14,7 +14,8 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ConditionalOnProperty(value = "ltts.jwt.enabled",havingValue = "true",matchIfMissing = true)
 @EnableConfigurationProperties(JwtProperties.class)
-@ComponentScan(basePackages = {"com.lming.ltts.common.jwt"})
+//@ComponentScan(basePackages = {"com.lming.ltts.common.jwt"})
+@Import(WebConfig.class)
 public class JwtAutoConfiguration {
 
 

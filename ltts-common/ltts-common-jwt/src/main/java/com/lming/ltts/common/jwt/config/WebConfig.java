@@ -5,6 +5,7 @@ import cn.hutool.core.util.ArrayUtil;
 import com.lming.ltts.common.jwt.interceptor.JwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -22,8 +23,12 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private JwtInterceptor jwtInterceptor;
+
+
+    @Bean
+    public JwtInterceptor jwtInterceptor(){
+        return new JwtInterceptor();
+    }
 
     @Autowired
     private JwtProperties jwtProperties;
@@ -41,7 +46,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
         //拦截路径可自行配置多个 可用 ，分隔开
-        registry.addInterceptor(jwtInterceptor)
+        registry.addInterceptor(jwtInterceptor())
                 .addPathPatterns(getAuthUrls())
                 .excludePathPatterns(getIgnoreUrls());
     }
