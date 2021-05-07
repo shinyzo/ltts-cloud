@@ -14,7 +14,7 @@
 
     <modules>
         <module>ltts-order-server</module>
-        <module>ltts-user-server</module>
+        <module>ltts-upms-server</module>
         <module>ltts-auth-server</module>
     </modules>
 

@@ -1,0 +1,23 @@
+
+
+ltts:
+  log:
+    enabled: true
+    clusterName: log-center
+    serverUrl: http://localhost:9090/log/collect
+
+  jwt:
+    authUrls: /**
+    ignoreUrls: /auth/**
+    clientId: 098f6bcd4621d373cade4e832627b4f6
+    # 密钥, 经过Base64加密, 可自行替换
+    base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+    # JWT的签发主体，存入issuer
+    name: ltts.order
+    # 过期时间，时间戳
+    expiresSecond: 172800
+
+nacos:
+  server-addr: localhost:8848
+  namespaces: cf7cb9cd-9740-4b33-b4eb-396f398dde82
+  group: LTTS_GROUP

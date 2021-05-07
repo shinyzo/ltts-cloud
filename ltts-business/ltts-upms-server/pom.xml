@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ltts-user-server</artifactId>
+    <artifactId>ltts-upms-server</artifactId>
 
 
 </project>

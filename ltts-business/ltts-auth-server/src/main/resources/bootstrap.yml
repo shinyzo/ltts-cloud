@@ -1,0 +1,24 @@
+# Spring 注册中心，配置中心配置
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery: #注册中心
+        enabled: true
+        namespace: ${nacos.namespaces}
+        group: ${nacos.group}
+        server-addr: ${nacos.server-addr}   # 服务注册地址
+      config: # 配置中心
+        enabled: false
+        namespace: ${nacos.namespaces}
+        server-addr: ${nacos.server-addr}
+        group: ${nacos.group}
+        shared-configs:
+          - dataId: common.yml
+            refresh: true
+
+
+
+
+
