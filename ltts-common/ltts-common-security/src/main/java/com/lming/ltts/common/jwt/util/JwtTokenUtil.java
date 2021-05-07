@@ -4,6 +4,7 @@ import cn.hutool.core.codec.Base64;
 import com.lming.ltts.common.core.exception.LttsAuthException;
 import com.lming.ltts.common.jwt.config.JwtProperties;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
+import com.lming.ltts.common.jwt.model.LoginUser;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,7 @@ import java.util.Date;
  * Description:
  */
 @Slf4j
-@Component
 public class JwtTokenUtil {
-
-    @Autowired
-    private static JwtProperties jwtProperties;
 
     /**
      * 解析jwt
@@ -54,7 +51,7 @@ public class JwtTokenUtil {
      * @param role
      * @return
      */
-    public static String createJWT(String userId, String username, String role) {
+    public static String createJWT(LoginUser loginUser,JwtProperties jwtProperties) {
         try {
             // 使用HS256加密算法
             SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -64,13 +61,13 @@ public class JwtTokenUtil {
             byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(jwtProperties.getBase64Secret());
             Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
             //userId是重要信息，进行加密下
-            String encryId = Base64.encode(userId);
+            String encryId = Base64.encode(String.valueOf(loginUser.getUserId()));
             //添加构成JWT的参数
             JwtBuilder builder = Jwts.builder().setHeaderParam("typ", "JWT")
                     // 可以将基本不重要的对象信息放到claims
-                    .claim("role", role)
-                    .claim("userId", userId)
-                    .setSubject(username)           // 代表这个JWT的主体，即它的所有人
+                    .claim("roles", loginUser.getRoles())
+                    .claim("userId", loginUser.getUserId())
+                    .setSubject(loginUser.getUserName())           // 代表这个JWT的主体，即它的所有人
                     .setIssuer(jwtProperties.getClientId())              // 代表这个JWT的签发主体；
                     .setIssuedAt(new Date())        // 是一个时间戳，代表这个JWT的签发时间；
                     .setAudience(jwtProperties.getName())          // 代表这个JWT的接收对象；
@@ -90,25 +87,7 @@ public class JwtTokenUtil {
             throw new LttsAuthException(AuthResultEnum.AUTH_SIGNATURE_ERROR);
         }
     }
-    /**
-     * 从token中获取用户名
-     * @param token
-     * @param base64Security
-     * @return
-     */
-    public static String getUsername(String token, String base64Security){
-        return parseJWT(token, base64Security).getSubject();
-    }
-    /**
-     * 从token中获取用户ID
-     * @param token
-     * @param base64Security
-     * @return
-     */
-    public static String getUserId(String token, String base64Security){
-        String userId = parseJWT(token, base64Security).get("userId", String.class);
-        return Base64.decodeStr(userId);
-    }
+
     /**
      * 是否已过期
      * @param token

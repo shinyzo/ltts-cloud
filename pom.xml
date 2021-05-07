@@ -195,7 +195,7 @@
 
             <dependency>
                 <groupId>com.lming.ltts</groupId>
-                <artifactId>ltts-common-jwt</artifactId>
+                <artifactId>ltts-common-security</artifactId>
                 <version>${ltts.version}</version>
             </dependency>
 
@@ -214,7 +214,7 @@
 
             <dependency>
                 <groupId>com.lming.ltts</groupId>
-                <artifactId>ltts-api-umps</artifactId>
+                <artifactId>ltts-api-upms</artifactId>
                 <version>${ltts.version}</version>
             </dependency>
 

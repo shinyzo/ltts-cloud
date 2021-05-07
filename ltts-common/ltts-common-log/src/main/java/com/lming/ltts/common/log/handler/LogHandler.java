@@ -1,7 +1,7 @@
 package com.lming.ltts.common.log.handler;
 
 import com.lming.ltts.common.log.service.AsyncLogService;
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

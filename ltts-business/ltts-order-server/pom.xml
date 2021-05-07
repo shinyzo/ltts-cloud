@@ -113,10 +113,5 @@
             <artifactId>ltts-common-redis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.lming.ltts</groupId>
-            <artifactId>ltts-common-jwt</artifactId>
-        </dependency>
-
     </dependencies>
 </project>

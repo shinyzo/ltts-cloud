@@ -1,6 +1,6 @@
 package com.lming.ltts.common.log.service;
 
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 
 /**
  * Author: liangming.zhang

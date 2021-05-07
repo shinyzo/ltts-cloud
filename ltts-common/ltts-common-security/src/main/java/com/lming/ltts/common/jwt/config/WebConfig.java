@@ -23,15 +23,11 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-
-
-    @Bean
-    public JwtInterceptor jwtInterceptor(){
-        return new JwtInterceptor();
-    }
-
     @Autowired
     private JwtProperties jwtProperties;
+
+    @Autowired
+    private JwtInterceptor jwtInterceptor;
 
     public static String[] DEFAULT_IGNORE_URLS = {
             "/v2/api-docs","/doc.html","/swagger-resources/**",
@@ -46,7 +42,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
         //拦截路径可自行配置多个 可用 ，分隔开
-        registry.addInterceptor(jwtInterceptor())
+        registry.addInterceptor(jwtInterceptor)
                 .addPathPatterns(getAuthUrls())
                 .excludePathPatterns(getIgnoreUrls());
     }

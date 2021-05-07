@@ -1,4 +1,4 @@
-package com.lming.ltts.log.api.config;
+package com.lming.ltts.api.log.config;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Date : 2021/4/28 - 16:23
  * Description:
  */
-@EnableFeignClients("com.lming.ltts.log.api.feign")
+@EnableFeignClients("com.lming.ltts.api.log.feign")
 @Configuration
 public class FeignAutoConfiguration {
 

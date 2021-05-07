@@ -2,7 +2,7 @@ package com.lming.ltts.log.server.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lming.ltts.common.core.response.R;
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 import com.lming.ltts.log.server.entity.LogEntity;
 import com.lming.ltts.log.server.model.LogQuery;
 import com.lming.ltts.log.server.service.ILogService;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Author: liangming.zhang

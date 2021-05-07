@@ -7,7 +7,7 @@ import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.log.annotation.LttsLog;
 import com.lming.ltts.common.log.handler.LogHandler;
 import com.lming.ltts.common.log.util.LogUtil;
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;

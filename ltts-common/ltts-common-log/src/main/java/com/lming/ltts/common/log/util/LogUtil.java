@@ -6,7 +6,7 @@ import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.log.enums.LogType;
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

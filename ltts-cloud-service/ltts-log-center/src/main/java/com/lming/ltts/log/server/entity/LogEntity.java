@@ -2,13 +2,11 @@ package com.lming.ltts.log.server.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lming.ltts.common.mybatis.entity.BaseIdEntity;
-import com.lming.ltts.log.api.entity.LogRequest;
+import com.lming.ltts.api.log.entity.LogRequest;
 import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Author: liangming.zhang

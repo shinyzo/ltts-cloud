@@ -1,6 +1,5 @@
 package com.lming.ltts.order;
 
-import com.lming.ltts.common.jwt.annotation.EnableJwt;
 import com.lming.ltts.common.swagger.annotation.EnableKnife4j2;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +14,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableKnife4j2
 @EnableDiscoveryClient
-@EnableJwt
 @MapperScan(value = "com.lming.ltts.order.mapper")
 public class OrderServerApplication {
 

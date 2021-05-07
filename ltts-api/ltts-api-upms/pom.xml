@@ -11,5 +11,16 @@
 
     <artifactId>ltts-api-upms</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-feign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lming.ltts</groupId>
+            <artifactId>ltts-common-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

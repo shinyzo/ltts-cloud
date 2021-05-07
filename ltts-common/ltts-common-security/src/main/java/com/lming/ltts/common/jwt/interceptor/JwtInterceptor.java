@@ -5,10 +5,9 @@ import com.lming.ltts.common.core.exception.LttsAuthException;
 import com.lming.ltts.common.jwt.annotation.JwtIgnore;
 import com.lming.ltts.common.jwt.config.JwtProperties;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
-import com.lming.ltts.common.jwt.util.JwtTokenUtil;
+import com.lming.ltts.common.jwt.service.TokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -29,6 +28,9 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
 
     @Autowired
     private JwtProperties jwtProperties;
+
+    @Autowired
+    private TokenService tokenService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -54,7 +56,8 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
         }
         // 获取token
         final String token = authHeader.substring(jwtProperties.getTokenPrefix().length());
-        JwtTokenUtil.parseJWT(token, jwtProperties.getBase64Secret());
+        tokenService.parseToken();
+//        JwtTokenUtil.parseJWT(token, jwtProperties.getBase64Secret());
         return true;
     }
 }

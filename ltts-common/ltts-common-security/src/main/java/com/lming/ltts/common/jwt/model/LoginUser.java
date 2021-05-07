@@ -3,6 +3,7 @@ package com.lming.ltts.common.jwt.model;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author: liangming.zhang
@@ -16,14 +17,15 @@ public class LoginUser {
 
     private String userName;
 
-    private List<String> permissions;
+    private Set<String> permissions;
 
-    private String role;
+    private Set<String> roles;
+
+    private Long orgId;
 
     private Long loginTime;
 
     private Long expireTime;
 
     private String token;
-
 }

@@ -1,7 +1,7 @@
-package com.lming.ltts.log.api.fallback;
+package com.lming.ltts.api.log.fallback;
 
-import com.lming.ltts.log.api.entity.LogRequest;
-import com.lming.ltts.log.api.feign.RemoteLogService;
+import com.lming.ltts.api.log.entity.LogRequest;
+import com.lming.ltts.api.log.feign.RemoteLogService;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

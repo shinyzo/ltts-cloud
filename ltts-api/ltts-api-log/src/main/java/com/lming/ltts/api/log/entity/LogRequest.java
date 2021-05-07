@@ -1,4 +1,4 @@
-package com.lming.ltts.log.api.entity;
+package com.lming.ltts.api.log.entity;
 
 import lombok.Data;
 

@@ -1,8 +1,8 @@
-package com.lming.ltts.log.api.feign;
+package com.lming.ltts.api.log.feign;
 
-import com.lming.ltts.log.api.constants.ServiceConstants;
-import com.lming.ltts.log.api.entity.LogRequest;
-import com.lming.ltts.log.api.fallback.RemoteLogFallbackFactory;
+import com.lming.ltts.api.log.entity.LogRequest;
+import com.lming.ltts.api.log.fallback.RemoteLogFallbackFactory;
+import com.lming.ltts.common.core.constants.ServiceConstants;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

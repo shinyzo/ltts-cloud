@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.lming.ltts.log.api.config.FeignAutoConfiguration
+com.lming.ltts.api.log.config.FeignAutoConfiguration
