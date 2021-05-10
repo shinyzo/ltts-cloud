@@ -7,5 +7,4 @@ package com.lming.ltts.order.constants;
  */
 public interface CacheKeyConstants {
 
-    String USER_PREFIX_KEY = "user:";
 }

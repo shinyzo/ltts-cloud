@@ -42,10 +42,13 @@ public class LogHandlerFactory {
 
 
     private LogHandler getSysDefineLogHandle(String handleTypeKey){
-        LogHandlerType logHandlerType = LogHandlerType.valueOf(handleTypeKey.toUpperCase());
-        if(logHandlerType != null){
+        try{
+            LogHandlerType logHandlerType = LogHandlerType.valueOf(handleTypeKey.toUpperCase());
             return logHandlerType.getLogHandler();
+        }catch (Exception e){
+            log.error("cast to LogHandlerType error:",e);
         }
+
         return null;
     }
 
