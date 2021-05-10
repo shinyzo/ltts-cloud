@@ -1,6 +1,6 @@
-package com.lming.ltts.common.log.service.impl;
+package com.lming.ltts.common.log.handler;
 
-import com.lming.ltts.common.log.service.AbstractLogService;
+import cn.hutool.json.JSONUtil;
 import com.lming.ltts.api.log.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,16 +12,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class LocalStoreLogServiceImpl extends AbstractLogService {
+public class LocalPrintLogHandler extends AbstractLogHandler {
 
 
     @Override
     public void saveLog(LogRequest logRequest) {
-        localStorageLog(logRequest);
+        log.info("==> local log print:{}" , JSONUtil.toJsonPrettyStr(logRequest));
     }
 
-
-    public void localStorageLog(LogRequest logRequest){
-
-    }
 }

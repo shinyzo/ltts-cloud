@@ -44,4 +44,14 @@ public class JwtTokenService implements TokenService {
     public boolean isExpired() {
         return false;
     }
+
+    @Override
+    public boolean offlineCurrentToken() {
+        return false;
+    }
+
+    @Override
+    public boolean forceOfflineToken(String token) {
+        return false;
+    }
 }

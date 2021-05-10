@@ -40,16 +40,13 @@ public class LogController {
         BeanUtils.copyProperties(logRequest,logEntity);
         logService.save(logEntity);
         return R.success();
-
     }
 
 
     @ApiOperation(value = "日志查询",notes = "日志查询")
     @PostMapping("/query")
     public R<Page<LogEntity> > query(LogQuery logQuery){
-
         return R.data(logService.pageQuery(logQuery));
-
     }
 
 }

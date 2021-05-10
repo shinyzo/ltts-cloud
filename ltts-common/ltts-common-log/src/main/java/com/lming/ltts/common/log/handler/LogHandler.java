@@ -1,26 +1,14 @@
 package com.lming.ltts.common.log.handler;
 
-import com.lming.ltts.common.log.service.AsyncLogService;
 import com.lming.ltts.api.log.entity.LogRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
 /**
  * Author: liangming.zhang
- * Date : 2021/5/6 - 14:53
+ * Date : 2021/5/10 - 14:12
  * Description:
  */
-@Service
-public class LogHandler {
+public interface LogHandler {
 
-    @Autowired
-    private AsyncLogService asyncLogService;
+    public void handleLog(LogRequest logRequest);
 
-    @Async
-    public void handleLog(LogRequest logRequest){
-        if(asyncLogService.isExecute()){
-            asyncLogService.saveLog(logRequest);
-        }
-    }
 }

@@ -5,7 +5,8 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.lming.ltts.common.core.enums.ResultEnum;
 import com.lming.ltts.common.log.annotation.LttsLog;
-import com.lming.ltts.common.log.handler.LogHandler;
+import com.lming.ltts.common.log.config.LogProperties;
+import com.lming.ltts.common.log.factory.LogHandlerFactory;
 import com.lming.ltts.common.log.util.LogUtil;
 import com.lming.ltts.api.log.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +35,11 @@ public class LttsControllerLogAspect {
     private String applicationName;
 
     @Autowired
-    private LogHandler logHandler;
+    private LogHandlerFactory factory;
+
+    @Autowired
+    private LogProperties logProperties;
+
 
     private ThreadLocal<Long> threadLocal = new ThreadLocal<>();
 
@@ -91,27 +96,27 @@ public class LttsControllerLogAspect {
                 return;
             }
 
-            LogRequest logEntity = LogUtil.buildLogEntity();
+            LogRequest logRequest = LogUtil.buildLogEntity();
             // 返回参数
-            logEntity.setResponseData(JSONUtil.toJsonStr(jsonResult));
+            logRequest.setResponseData(JSONUtil.toJsonStr(jsonResult));
             // 设置方法名称
             String className = joinPoint.getTarget().getClass().getName();
             String methodName = joinPoint.getSignature().getName();
-            logEntity.setClassName(className);
-            logEntity.setMethodName(methodName);
-            logEntity.setServerName(applicationName);
+            logRequest.setClassName(className);
+            logRequest.setMethodName(methodName);
+            logRequest.setServerName(applicationName);
 
-            logEntity.setCostTime(System.currentTimeMillis() - threadLocal.get());
+            logRequest.setCostTime(System.currentTimeMillis() - threadLocal.get());
 
             if (e != null) {
-                logEntity.setResponseCode(ResultEnum.ERROR.getCode());
-                logEntity.setErrorMsg(StrUtil.subSufByLength(e.getMessage(), 500));
+                logRequest.setResponseCode(ResultEnum.ERROR.getCode());
+                logRequest.setErrorMsg(StrUtil.subSufByLength(e.getMessage(), 500));
             }
 
             // 处理设置注解上的参数
-            getControllerMethodDescription(joinPoint, controllerLog, logEntity);
+            getControllerMethodDescription(joinPoint, controllerLog, logRequest);
             // 保存数据库
-            logHandler.handleLog(logEntity);
+            factory.getHandle(logProperties.getHandleType()).handleLog(logRequest);
 
         } catch (Exception exp) {
             // 记录本地异常日志

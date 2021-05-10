@@ -42,22 +42,12 @@ public class JwtInterceptor  extends HandlerInterceptorAdapter {
                 return true;
             }
         }
+
         if (HttpMethod.OPTIONS.equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
             return true;
         }
-        // 获取请求头信息authorization信息
-        final String authHeader = request.getHeader(jwtProperties.getTokenHeaderName());
-        log.info("==> authHeader  : {}", authHeader);
-        log.info("==> Request URL : {}", request.getRequestURL());
-        if (StrUtil.isBlank(authHeader) || !authHeader.startsWith(jwtProperties.getTokenPrefix())) {
-            log.warn("==> 用户未登录，请先登录 ###");
-            throw new LttsAuthException(AuthResultEnum.AUTH_TOKEN_EMPTY);
-        }
-        // 获取token
-        final String token = authHeader.substring(jwtProperties.getTokenPrefix().length());
         tokenService.parseToken();
-//        JwtTokenUtil.parseJWT(token, jwtProperties.getBase64Secret());
         return true;
     }
 }

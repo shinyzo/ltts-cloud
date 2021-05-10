@@ -13,5 +13,9 @@ public interface TokenService {
 
     LoginUser parseToken();
 
+    boolean offlineCurrentToken();
+
+    boolean forceOfflineToken(String token);
+
     boolean isExpired();
 }

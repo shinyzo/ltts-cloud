@@ -5,9 +5,11 @@ import cn.hutool.core.util.StrUtil;
 import com.lming.ltts.common.core.exception.LttsAuthException;
 import com.lming.ltts.common.jwt.config.JwtProperties;
 import com.lming.ltts.common.jwt.enums.AuthResultEnum;
+import com.lming.ltts.common.jwt.keys.CacheKeys;
 import com.lming.ltts.common.jwt.model.LoginUser;
 import com.lming.ltts.common.jwt.util.ServletUtil;
 import com.lming.ltts.common.redis.service.RedisService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
@@ -22,11 +24,12 @@ import java.util.concurrent.TimeUnit;
  * Description:
  */
 @Service
+@Slf4j
 public class RedisTokenService implements TokenService {
 
     public static final Long MILLIS_SECOND = 1000L;
 
-    public static final String TOKEN_KEY = "ACCESS_TOKEN:";
+
 
     @Autowired
     private JwtProperties jwtProperties;
@@ -41,11 +44,11 @@ public class RedisTokenService implements TokenService {
      */
     public String createToken(LoginUser loginUser){
         String token = IdUtil.fastSimpleUUID();
-
         loginUser.setToken(token);
         loginUser.setLoginTime(System.currentTimeMillis());
         loginUser.setExpireTime(loginUser.getLoginTime() + jwtProperties.getExpiresSecond());
         redisService.setCacheObject(getTokenKey(token), loginUser,jwtProperties.getExpiresSecond()/MILLIS_SECOND, TimeUnit.SECONDS);
+        log.info("==> token:{},userInfo:{}",token,loginUser);
         return token;
     }
 
@@ -70,7 +73,7 @@ public class RedisTokenService implements TokenService {
      */
     @Override
     public LoginUser parseToken(){
-        String headerToken = ServletUtil.getRequestToken(jwtProperties.getTokenHeaderName());
+        final String headerToken = ServletUtil.getRequestToken(jwtProperties.getTokenHeaderName());
         if(StrUtil.isBlank(headerToken) || !headerToken.startsWith(jwtProperties.getTokenPrefix())) {
             throw new LttsAuthException(AuthResultEnum.AUTH_TOKEN_EMPTY);
         }
@@ -85,9 +88,25 @@ public class RedisTokenService implements TokenService {
         return loginUser;
     }
 
+    @Override
+    public boolean offlineCurrentToken() {
+        final String headerToken = ServletUtil.getRequestToken(jwtProperties.getTokenHeaderName());
+        if(StrUtil.isNotBlank(headerToken)){
+            String token = headerToken.substring(jwtProperties.getTokenPrefix().length());
+            forceOfflineToken(token);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean forceOfflineToken(String token) {
+        String userKey = getTokenKey(token);
+        redisService.deleteObject(userKey);
+        return true;
+    }
 
     private String getTokenKey(String token){
-        return TOKEN_KEY + token;
+        return CacheKeys.TOKEN_CACHE_PREFIX_KEY + token;
     }
 
 

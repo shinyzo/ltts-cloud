@@ -1,1 +1,1 @@
-com.lming.ltts.common.log.service.impl.FeignLogServiceImpl
+com.lming.ltts.common.log.service.impl.FeignLogHandler

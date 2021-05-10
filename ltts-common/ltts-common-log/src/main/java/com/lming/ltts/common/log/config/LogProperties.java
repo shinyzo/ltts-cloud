@@ -18,6 +18,10 @@ public class LogProperties {
      */
     private Boolean enabled;
     /**
+     * 日志处理器
+     */
+    private String handleType;
+    /**
      * 集群时，集群名称
      */
     private String clusterName;

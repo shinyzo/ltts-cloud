@@ -1,9 +1,9 @@
-package com.lming.ltts.common.log.service.impl;
+package com.lming.ltts.common.log.handler;
 
 import cn.hutool.json.JSONUtil;
-import com.lming.ltts.common.log.service.AsyncLogService;
 import com.lming.ltts.api.log.entity.LogRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class RabbitMqLogServiceImpl implements AsyncLogService {
+public class RabbitMqLogHandler extends AbstractLogHandler {
 
     @Override
     public boolean isExecute() {
@@ -21,7 +21,9 @@ public class RabbitMqLogServiceImpl implements AsyncLogService {
     }
 
     @Override
+    @Async
     public void saveLog(LogRequest logRequest) {
+
         log.info("==> send log to mq :{}" , JSONUtil.toJsonStr(logRequest));
     }
 

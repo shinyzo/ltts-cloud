@@ -1,4 +1,4 @@
-package com.lming.ltts.common.log.service.impl;
+package com.lming.ltts.common.log.handler;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
+public class FeignLogHandler extends AbstractLogHandler {
 
     @Autowired
     private RemoteLogService remoteLogService;
@@ -47,10 +48,9 @@ public class FeignLogServiceImpl extends HttpClientLogServiceImpl {
     }
 
     @Override
+    @Async
     public void saveLog(LogRequest logRequest) {
         remoteLogService.saveLog(logRequest);
     }
-
-
 
 }

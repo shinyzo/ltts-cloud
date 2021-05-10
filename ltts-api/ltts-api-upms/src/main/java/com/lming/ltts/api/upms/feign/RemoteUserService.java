@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface RemoteUserService {
 
     @GetMapping("/user/{userName}")
-    public R<SysUser> getUserInfo(@PathVariable String userName);
+    public SysUser getUserInfo(@PathVariable String userName);
 
 
 

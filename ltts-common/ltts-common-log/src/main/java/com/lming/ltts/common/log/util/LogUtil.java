@@ -45,7 +45,6 @@ public class LogUtil {
 
         logEntity.setResponseCode(ResultEnum.SUCCESS.getCode());
         logEntity.setErrorMsg(ResultEnum.SUCCESS.getMessage());
-
         return logEntity;
     }
 
