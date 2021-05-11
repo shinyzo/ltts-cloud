@@ -24,7 +24,7 @@ public class RabbitMqLogHandler extends AbstractLogHandler {
     @Async
     public void saveLog(LogRequest logRequest) {
 
-        log.info("==> send log to mq :{}" , JSONUtil.toJsonStr(logRequest));
+        log.info("==> send log to rabbit mq :{}" , JSONUtil.toJsonStr(logRequest));
     }
 
 }

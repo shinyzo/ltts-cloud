@@ -36,7 +36,7 @@ public class FeignLogHandler extends AbstractLogHandler {
     public boolean isExecute() {
 
         if(StrUtil.isEmpty(logProperties.getClusterName())){
-            log.error("log cluster name is empty.");
+            log.error("log center cluster name is empty.");
             return false;
         }
         List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances(logProperties.getClusterName());

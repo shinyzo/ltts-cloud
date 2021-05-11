@@ -34,7 +34,6 @@ public class LogHandlerFactory {
         if(logHandler != null ){
             return logHandler;
         }
-
         log.warn("==> could not found log handle bean:{} ",key);
         log.info("==> set default log handler :{}", LogHandlerType.LOCAL_PRINT.name());
         return getDefaultHandle();
@@ -46,7 +45,7 @@ public class LogHandlerFactory {
             LogHandlerType logHandlerType = LogHandlerType.valueOf(handleTypeKey.toUpperCase());
             return logHandlerType.getLogHandler();
         }catch (Exception e){
-            log.error("cast to LogHandlerType error:",e);
+            log.error("{} can not cast to LogHandlerType ",handleTypeKey);
         }
 
         return null;
